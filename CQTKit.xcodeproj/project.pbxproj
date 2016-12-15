@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C97B39871E01C5B9005426F4 /* CQTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B397D1E01C5B9005426F4 /* CQTKit.framework */; };
-		C97B398C1E01C5B9005426F4 /* CQTKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C97B398B1E01C5B9005426F4 /* CQTKitTests.m */; };
+		C97B398C1E01C5B9005426F4 /* CQTKitTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = C97B398B1E01C5B9005426F4 /* CQTKitTests.mm */; };
 		C97B398E1E01C5B9005426F4 /* CQTKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C97B39801E01C5B9005426F4 /* CQTKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C97B39991E01C5D8005426F4 /* CQT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C97B39971E01C5D8005426F4 /* CQT.cpp */; };
+		C97B399A1E01C5D8005426F4 /* CQT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C97B39981E01C5D8005426F4 /* CQT.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		C97B399D1E01F635005426F4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B399C1E01F635005426F4 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +30,11 @@
 		C97B39801E01C5B9005426F4 /* CQTKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQTKit.h; sourceTree = "<group>"; };
 		C97B39811E01C5B9005426F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97B39861E01C5B9005426F4 /* CQTKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CQTKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C97B398B1E01C5B9005426F4 /* CQTKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQTKitTests.m; sourceTree = "<group>"; };
+		C97B398B1E01C5B9005426F4 /* CQTKitTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CQTKitTests.mm; sourceTree = "<group>"; };
 		C97B398D1E01C5B9005426F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C97B39971E01C5D8005426F4 /* CQT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CQT.cpp; sourceTree = "<group>"; };
+		C97B39981E01C5D8005426F4 /* CQT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CQT.hpp; sourceTree = "<group>"; };
+		C97B399C1E01F635005426F4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C97B399D1E01F635005426F4 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,7 @@
 				C97B397F1E01C5B9005426F4 /* CQTKit */,
 				C97B398A1E01C5B9005426F4 /* CQTKitTests */,
 				C97B397E1E01C5B9005426F4 /* Products */,
+				C97B399B1E01F635005426F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +79,8 @@
 		C97B397F1E01C5B9005426F4 /* CQTKit */ = {
 			isa = PBXGroup;
 			children = (
+				C97B39971E01C5D8005426F4 /* CQT.cpp */,
+				C97B39981E01C5D8005426F4 /* CQT.hpp */,
 				C97B39801E01C5B9005426F4 /* CQTKit.h */,
 				C97B39811E01C5B9005426F4 /* Info.plist */,
 			);
@@ -80,10 +90,18 @@
 		C97B398A1E01C5B9005426F4 /* CQTKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				C97B398B1E01C5B9005426F4 /* CQTKitTests.m */,
+				C97B398B1E01C5B9005426F4 /* CQTKitTests.mm */,
 				C97B398D1E01C5B9005426F4 /* Info.plist */,
 			);
 			path = CQTKitTests;
+			sourceTree = "<group>";
+		};
+		C97B399B1E01F635005426F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C97B399C1E01F635005426F4 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C97B398E1E01C5B9005426F4 /* CQTKit.h in Headers */,
+				C97B399A1E01C5D8005426F4 /* CQT.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C97B39991E01C5D8005426F4 /* CQT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97B398C1E01C5B9005426F4 /* CQTKitTests.m in Sources */,
+				C97B398C1E01C5B9005426F4 /* CQTKitTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +337,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = RJKYY38TY2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -337,7 +357,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = RJKYY38TY2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
