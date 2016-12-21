@@ -22,9 +22,11 @@ static constexpr int duration = 1;
 
 - (void)testBasics
 {
-	// Sets things up with a minimum frequency of 40 Hz, max of 22050 Hz, 12 bins, a sample rate
+	// Sets things up to correspond to a 88-key piano keyboard with 12 bins, a sample rate
 	// of 44100 Hz, and a Hamming window function.
-	CQT qt(40, 22050, 12, sampleRate, WindowFunction::Hamming);
+	CQT qt(27.5, 4434.92, 12, sampleRate, WindowFunction::Hamming);
+
+	XCTAssertEqual(qt.k(), 88);
 
 	// Generates a tone at 440 Hz.
 	float *x = new float[sampleRate * duration];
@@ -48,8 +50,8 @@ static constexpr int duration = 1;
 
 	delete[] results;
 
-	// Ensures we have the highest response at A4. The offset is due to us starting at 40 Hz.
-	XCTAssertEqual(idx + 27, 69 /* A4 */);
+	// Ensures we have the highest response at A4. The offset is due to us starting at 27.5 Hz.
+	XCTAssertEqual(idx + 21, 69 /* A4 */);
 }
 
 @end
