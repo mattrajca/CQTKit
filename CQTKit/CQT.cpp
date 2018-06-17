@@ -51,6 +51,9 @@ CQT::CQT(float minFreq, float maxFreq, int bins, float sampleFreq, WindowFunctio
 		case WindowFunction::Hamming:
 			vDSP_hamm_window(window.realp, N, 0);
 			break;
+		case WindowFunction::Hann:
+			vDSP_hann_window(window.realp, N, 0);
+			break;
 		}
 
 		for (int i = 0; i < N; ++i) {
@@ -107,7 +110,13 @@ CQT::~CQT()
 	vDSP_destroy_fftsetup(reinterpret_cast<FFTSetup>(m_fftSetup));
 }
 
-float *CQT::forward(float *x, int length) const
+float *CQT::forward(float *x, int length) const {
+	float *mags = new float[m_K];
+	forward(x, mags, length);
+	return mags;
+}
+
+void CQT::forward(const float *x, float *mags, int length) const
 {
 	DSPSplitComplex xMatrix;
 	xMatrix.realp = m_fftLengthMatrixReal;
@@ -130,11 +139,7 @@ float *CQT::forward(float *x, int length) const
 	existing.realp = m_kernelReal;
 	existing.imagp = m_kernelImag;
 	vDSP_zmmul(&xMatrix, 1, &existing, 1, &result, 1, 1, m_K, m_fftLength);
-
-	float *mags = new float[m_K];
 	vDSP_zvmags(&result, 1, mags, 1, m_K);
-
-	return mags;
 }
 
 } // namespace CQTKit
