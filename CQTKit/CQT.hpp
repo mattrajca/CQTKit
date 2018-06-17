@@ -12,7 +12,8 @@
 namespace CQTKit {
 
 enum class WindowFunction {
-	Hamming
+	Hamming,
+	Hann
 };
 
 class CQT {
@@ -26,6 +27,8 @@ public:
 	///
 	/// The returned vector is of length `k()` and must be freed by the caller.
 	float *forward(float *x, int N) const;
+
+	void forward(const float *input, float *output, int N) const;
 
 	inline int k() const {
 		return m_K;
